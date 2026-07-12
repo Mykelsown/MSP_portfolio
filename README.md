@@ -1,40 +1,55 @@
-# Samuel Micheal Pelumi — Portfolio
+# Samuel Micheal Pelumi, Portfolio
 
-A React + Tailwind CSS rebuild of the original portfolio, with dark/light mode and an ambient animated background.
+My personal developer portfolio, built with React, Vite, and Tailwind CSS. Dark and light mode, an ambient animated background, and a resume that's actually kept up to date.
 
-## What's new in this rebuild
+## Live site
 
-- **React + Vite + Tailwind CSS v4**, replacing the previous plain HTML/Parcel setup.
-- **Dark/light mode toggle** in the navbar (and mobile menu), persisted to `localStorage`, with no flash on page load.
-- **Dynamic ambient background**: slow-drifting, low-opacity color fields plus a faint node-grid texture, fixed behind content with `pointer-events: none` so it never obstructs text. Colors are theme-aware and shift automatically with dark/light mode.
-- **Contact form**, restored and rebuilt in React, matching the site's new look. It posts to Netlify Forms under the hood (see note below), with a honeypot field for spam and a proper success/error state.
-- **Updated content** across About, Skills, Projects, and Experience, reflecting current work: the SkinByWura full-stack build, the Superteam Nigeria bounty program, the InheritX/Fracverse open-source contribution, and the KSI Gadgets contract work.
-- **Updated resume** (`public/resume/Samuel_Micheal_Pelumi_Resume.pdf`), rebuilt to match the same content, in a deep navy and electric blue layout.
-- Same section structure as the original: Home, About, Projects, Experience & Education, Contact.
+https://mykelsown.netlify.app
 
-## Contact form and Netlify
+## Features
 
-The form in `src/components/ContactForm.jsx` submits using the same Netlify Forms approach as the original site. Because this is now a single-page React app, Netlify's build-time form scanner can't see the form inside the JS bundle, so `index.html` includes a small hidden, unused copy of the form (same name and fields) purely so Netlify detects it at deploy time. You don't need to touch that hidden form, just deploy to Netlify as usual and submissions will show up under Forms in your site dashboard.
+- **Dark and light mode.** Toggle in the navbar, saved across visits, no flash on reload.
+- **Ambient animated background.** Soft, slow-drifting color fields behind the content, never on top of it. Colors adapt automatically to the active theme.
+- **Contact form.** Name, email, and message, wired up to Netlify Forms with spam protection built in.
+- **Projects section** with live demo and source links for everything I've shipped.
+- **Experience and education timeline.**
+- **Downloadable resume**, kept in sync with the content on the site.
+- Fully responsive, from phone to desktop.
 
-If you deploy anywhere other than Netlify, the form will still render and validate, but submissions won't go anywhere until you point it at a different backend (a simple serverless function, Formspree, etc).
+## Tech stack
+
+- [React](https://react.dev/) 19
+- [Vite](https://vitejs.dev/) for the build and dev server
+- [Tailwind CSS](https://tailwindcss.com/) v4
+- [Lucide](https://lucide.dev/) for icons
+- [Netlify Forms](https://docs.netlify.com/forms/setup/) for the contact form backend
 
 ## Getting started
 
+Clone the repo, then:
+
 ```bash
 npm install
-npm run dev       # start the dev server
-npm run build     # production build, output in dist/
-npm run preview   # preview the production build
+npm run dev
+```
+
+This starts the dev server, usually at `http://localhost:5173`.
+
+Other useful commands:
+
+```bash
+npm run build     # production build, output goes to dist/
+npm run preview   # serve the production build locally
 ```
 
 ## Project structure
 
 ```
 src/
-  components/       UI sections (Navbar, Hero, About, Projects, Experience, Contact, Footer)
+  components/       Page sections: Navbar, Hero, About, Projects, Experience, Contact, Footer
   components/icons/ Small custom icons not covered by lucide-react
-  context/          ThemeContext (dark/light mode)
-  hooks/            useReveal (scroll-triggered fade-in)
+  context/          ThemeContext, handles the dark/light mode toggle
+  hooks/            useReveal, a small scroll-triggered fade-in hook
   data/content.js   All page copy and structured content in one place
   assets/imgs/      Project screenshots and profile photo
 public/resume/      Downloadable resume PDF
@@ -42,9 +57,23 @@ public/resume/      Downloadable resume PDF
 
 ## Editing content
 
-Nearly everything text-based (name, bio, skills, projects, experience, contact info) lives in `src/data/content.js`. Update it there rather than digging through components.
+Almost everything text-based (name, bio, skills, projects, experience, contact info) lives in `src/data/content.js`. Update it there instead of digging through individual components.
 
-## Notes
+To swap the resume, drop a new PDF into `public/resume/` and update the filename in `content.js` if it changes.
 
-- Icons are from [lucide-react](https://lucide.dev/). The GitHub mark ships as a small custom inline SVG in `src/components/icons/GithubMark.jsx`, since recent lucide-react releases dropped brand icons.
-- Fonts: Sora (headings), Inter (body), JetBrains Mono (labels and the terminal-style hero card), loaded from Google Fonts in `index.html`.
+## Deploying
+
+This is a static site once built, so it works on Netlify, Vercel, GitHub Pages, or anywhere that serves static files.
+
+### Netlify
+
+The contact form uses Netlify Forms. Since this is a single-page app, Netlify's build-time form scanner can't see the form inside the compiled JS, so `index.html` ships with a small hidden duplicate of the form, same name and fields, purely so Netlify picks it up at deploy time. You don't need to touch it. Just connect the repo to Netlify, deploy, and submissions will start showing up under Forms in the site dashboard.
+
+## License
+
+Personal project, feel free to use the structure as a reference for your own portfolio, but please don't copy the content or resume as your own.
+
+## Contact
+
+- Email: mykelsamuel512@gmail.com
+- GitHub: [github.com/Mykelsown](https://github.com/Mykelsown)
