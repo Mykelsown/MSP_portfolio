@@ -1,7 +1,7 @@
 export const profile = {
   name: "Samuel Micheal Pelumi",
   shortName: "Micheal",
-  initials: "SM",
+  initials: "favicon.svg",
   role: "Full-Stack Developer",
   location: "Lagos, Nigeria",
   email: "mykelsamuel512@gmail.com",

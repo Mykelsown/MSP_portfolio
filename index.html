@@ -3,8 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/smp-icon-180.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Samuel Micheal Pelumi: Full-stack developer building in React, Tailwind CSS, and Go." />
+    <meta
+      name="description"
+      content="Samuel Micheal Pelumi: Full-stack developer building in React, Tailwind CSS, and Go."
+    />
     <meta name="theme-color" content="#0A0E14" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -18,7 +22,9 @@
       (function () {
         try {
           var saved = localStorage.getItem("theme");
-          var prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+          var prefersDark = window.matchMedia(
+            "(prefers-color-scheme: dark)",
+          ).matches;
           if (saved === "dark" || (!saved && prefersDark)) {
             document.documentElement.classList.add("dark");
           }
@@ -34,7 +40,12 @@
       this form's fields. The real, interactive form lives in
       src/components/ContactForm.jsx and posts to this same form name.
     -->
-    <form name="contact" data-netlify="true" netlify-honeypot="bot-field" hidden>
+    <form
+      name="contact"
+      data-netlify="true"
+      netlify-honeypot="bot-field"
+      hidden
+    >
       <input type="text" name="name" />
       <input type="email" name="email" />
       <textarea name="message"></textarea>

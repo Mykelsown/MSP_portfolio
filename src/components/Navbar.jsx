@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Menu, X } from "lucide-react";
+import { Filter, Menu, X } from "lucide-react";
 import ThemeToggle from "./ThemeToggle";
 import { profile } from "../data/content";
 
@@ -31,12 +31,17 @@ export default function Navbar() {
       >
         <div
           className={`flex w-full items-center justify-between rounded-2xl border px-4 py-2.5 backdrop-blur-md transition-all duration-300 sm:px-6 ${
-            scrolled ? "border-hairline bg-surface/80 card-shadow" : "border-transparent bg-transparent"
+            scrolled
+              ? "border-hairline bg-surface/80 card-shadow"
+              : "border-transparent bg-transparent"
           }`}
         >
-          <a href="#home" className="font-mono text-lg font-semibold tracking-tight">
-            <span style={{ color: "var(--accent)" }}>{profile.initials}</span>
-            <span className="text-muted">.</span>
+          <a
+            href="#home"
+            className="font-mono text-lg font-semibold tracking-tight"
+          >
+            <img src={profile.initials} alt="brand-logo" className="w-18 h-12" style={{filter: "var(--logo-invert)"}} />
+            
           </a>
 
           <nav className="hidden items-center gap-1 md:flex">
