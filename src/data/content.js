@@ -1,8 +1,8 @@
 export const profile = {
   name: "Samuel Micheal Pelumi",
   shortName: "Micheal",
-  initials: "SMP",
-  role: "Frontend-Leaning Full-Stack Developer",
+  initials: "SM",
+  role: "Full-Stack Developer",
   location: "Lagos, Nigeria",
   email: "mykelsamuel512@gmail.com",
   phone: "09132392431",
@@ -19,7 +19,7 @@ export const profile = {
 export const aboutText = {
   heading: "About Me",
   intro:
-    "I'm a frontend-leaning full-stack developer with a background in Mechatronics Engineering. I care about interfaces that feel considered, and about backend systems that hold up under real usage, not just in a demo.",
+    "I'm a full-stack developer with a background in Mechatronics Engineering. I care about interfaces that feel considered, and about backend systems that hold up under real usage, not just in a demo.",
   paragraphs: [
     "I started in front-end work, React and Tailwind CSS are where I'm strongest and where most of my shipped projects live. Over the last year I've been deliberately growing into the backend, learning Go and TypeScript through structured practice, open-source contributions, and paid contract work rather than tutorials alone.",
     "My engineering background from Lagos State Polytechnic taught me to think in systems before I think in syntax: break a problem down, reason about edge cases, then build. That habit shows up in how I approach both UI states and server logic.",

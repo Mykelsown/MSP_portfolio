@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Samuel Micheal Pelumi: Frontend-leaning full-stack developer building in React, Tailwind CSS, and Go." />
+    <meta name="description" content="Samuel Micheal Pelumi: Full-stack developer building in React, Tailwind CSS, and Go." />
     <meta name="theme-color" content="#0A0E14" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -12,7 +12,7 @@
       href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
-    <title>Samuel Micheal Pelumi | Frontend & Full-Stack Developer</title>
+    <title>Samuel Micheal Pelumi | Full-Stack Developer</title>
     <script>
       // Avoid a light/dark flash on load by applying the saved theme before paint.
       (function () {
@@ -28,6 +28,18 @@
   </head>
   <body>
     <div id="root"></div>
+    <!--
+      Hidden, unused form: exists only so Netlify's build-time form
+      detection (which scans static HTML, not the React bundle) picks up
+      this form's fields. The real, interactive form lives in
+      src/components/ContactForm.jsx and posts to this same form name.
+    -->
+    <form name="contact" data-netlify="true" netlify-honeypot="bot-field" hidden>
+      <input type="text" name="name" />
+      <input type="email" name="email" />
+      <textarea name="message"></textarea>
+      <input type="text" name="bot-field" />
+    </form>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
