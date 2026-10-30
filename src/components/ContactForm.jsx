@@ -37,11 +37,11 @@ export default function ContactForm() {
 
   if (status === "success") {
     return (
-      <div className="flex h-full flex-col items-center justify-center rounded-2xl border border-hairline bg-surface p-8 text-center card-shadow">
-        <p className="font-mono text-sm" style={{ color: "var(--signal)" }}>
-          $ message --sent
+      <div className="flex h-full flex-col items-center justify-center rounded-3xl border border-hairline bg-surface p-8 text-center card-shadow">
+        <p className="label" style={{ color: "var(--signal)" }}>
+          Message sent
         </p>
-        <h3 className="mt-3 font-display text-xl font-bold">Thanks, that came through.</h3>
+        <h3 className="mt-3 font-display text-xl">Thanks, that came through.</h3>
         <p className="mt-2 text-sm text-muted">I'll get back to you as soon as I can.</p>
         <button
           onClick={() => setStatus("idle")}
@@ -57,11 +57,9 @@ export default function ContactForm() {
     <form
       name="contact"
       onSubmit={handleSubmit}
-      className="flex flex-col gap-5 rounded-2xl border border-hairline bg-surface p-6 card-shadow sm:p-8"
+      className="flex flex-col gap-5 rounded-3xl border border-hairline bg-surface p-6 card-shadow sm:p-8"
     >
-      <p className="mb-1 font-mono text-sm" style={{ color: "var(--accent)" }}>
-        $ send --message
-      </p>
+      <h3 className="font-display text-2xl">Send a message</h3>
 
       {/* Honeypot field, hidden from real users */}
       <p className="hidden">
@@ -81,7 +79,7 @@ export default function ContactForm() {
           required
           value={values.name}
           onChange={handleChange}
-          className="w-full rounded-lg border border-hairline bg-soft px-4 py-3 text-[var(--text)] outline-none transition-colors focus:border-[var(--accent)]"
+          className="w-full rounded-xl border border-hairline bg-[var(--bg)] px-4 py-3 text-[var(--text)] outline-none transition-colors focus:border-[var(--accent)]"
         />
       </div>
 
@@ -96,7 +94,7 @@ export default function ContactForm() {
           required
           value={values.email}
           onChange={handleChange}
-          className="w-full rounded-lg border border-hairline bg-soft px-4 py-3 text-[var(--text)] outline-none transition-colors focus:border-[var(--accent)]"
+          className="w-full rounded-xl border border-hairline bg-[var(--bg)] px-4 py-3 text-[var(--text)] outline-none transition-colors focus:border-[var(--accent)]"
         />
       </div>
 
@@ -111,7 +109,7 @@ export default function ContactForm() {
           required
           value={values.message}
           onChange={handleChange}
-          className="w-full resize-none rounded-lg border border-hairline bg-soft px-4 py-3 text-[var(--text)] outline-none transition-colors focus:border-[var(--accent)]"
+          className="w-full resize-none rounded-xl border border-hairline bg-[var(--bg)] px-4 py-3 text-[var(--text)] outline-none transition-colors focus:border-[var(--accent)]"
         />
       </div>
 
@@ -124,8 +122,8 @@ export default function ContactForm() {
       <button
         type="submit"
         disabled={status === "sending"}
-        className="inline-flex items-center justify-center gap-2 rounded-xl px-6 py-3.5 font-semibold text-white transition-transform hover:scale-[1.01] disabled:opacity-70"
-        style={{ background: "var(--accent)" }}
+        className="inline-flex items-center justify-center gap-2 rounded-full px-6 py-3.5 font-bold text-white transition-transform hover:scale-[1.01] disabled:opacity-70"
+        style={{ background: "var(--text)" }}
       >
         {status === "sending" ? (
           <>

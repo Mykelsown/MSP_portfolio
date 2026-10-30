@@ -1,87 +1,47 @@
-import { Briefcase, GraduationCap } from "lucide-react";
-import { experience, education } from "../data/content";
+import { experience } from "../data/content";
 import { useReveal } from "../hooks/useReveal";
+import SectionHeading from "./SectionHeading";
 
-function TimelineItem({ index, title, org, period, points, description, accentVar }) {
+function Role({ role, org, period, points }) {
   const ref = useReveal();
   return (
-    <div ref={ref} className="reveal relative pl-9">
-      <span
-        className="absolute left-0 top-1 flex h-6 w-6 items-center justify-center rounded-full font-mono text-[10px] font-bold text-white"
-        style={{ background: `var(${accentVar})` }}
-      >
-        {String(index + 1).padStart(2, "0")}
-      </span>
-      <span className="absolute left-[11px] top-7 bottom-[-2rem] w-px bg-[var(--border)] last:hidden" />
-
-      <div className="rounded-2xl border border-hairline bg-surface p-6 card-shadow">
-        <h4 className="font-display text-lg font-bold">{title}</h4>
-        <p className="mt-1 font-mono text-sm" style={{ color: `var(${accentVar})` }}>
-          {org} · {period}
-        </p>
-        {description && <p className="mt-3 text-sm leading-relaxed text-muted">{description}</p>}
-        {points && (
-          <ul className="mt-3 space-y-2">
-            {points.map((pt, i) => (
-              <li key={i} className="flex gap-2 text-sm leading-relaxed text-muted">
-                <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-current" />
-                {pt}
-              </li>
-            ))}
-          </ul>
-        )}
+    <li ref={ref} className="reveal grid grid-cols-1 gap-4 border-t border-hairline py-9 md:grid-cols-[0.8fr_1.2fr] md:gap-12">
+      <div>
+        <span
+          className="inline-block rounded-full border px-3 py-0.5 text-xs font-bold"
+          style={{ borderColor: "var(--accent)", color: "var(--accent-ink)" }}
+        >
+          {period}
+        </span>
+        <h3 className="mt-4 font-display text-2xl">{role}</h3>
+        <p className="mt-1 text-sm font-bold text-muted">{org}</p>
       </div>
-    </div>
+      <ul className="space-y-3">
+        {points.map((pt) => (
+          <li key={pt} className="flex gap-3 leading-relaxed text-muted">
+            <span className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full" style={{ background: "var(--accent)" }} />
+            {pt}
+          </li>
+        ))}
+      </ul>
+    </li>
   );
 }
 
 export default function Experience() {
-  const headingRef = useReveal();
   return (
-    <section id="experience" className="py-24 sm:py-28">
+    <section id="experience" className="py-20 sm:py-24">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-        <div ref={headingRef} className="reveal mb-16 max-w-2xl">
-          <p className="mb-3 font-mono text-sm" style={{ color: "var(--accent)" }}>
-            // 03 experience
-          </p>
-          <h2 className="font-display text-3xl font-bold sm:text-4xl">Experience &amp; Education</h2>
-          <p className="mt-4 text-lg text-muted">
-            Bounty programs, open-source contributions, and contract work, alongside the engineering
-            foundation underneath it all.
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 gap-14 lg:grid-cols-2">
-          <div>
-            <h3 className="mb-8 flex items-center gap-2 font-display text-xl font-bold">
-              <Briefcase size={20} style={{ color: "var(--accent)" }} /> Experience
-            </h3>
-            <div className="space-y-8">
-              {experience.map((item, i) => (
-                <TimelineItem key={item.role} index={i} accentVar="--accent" {...item} />
-              ))}
-            </div>
-          </div>
-
-          <div>
-            <h3 className="mb-8 flex items-center gap-2 font-display text-xl font-bold">
-              <GraduationCap size={20} style={{ color: "var(--signal)" }} /> Education
-            </h3>
-            <div className="space-y-8">
-              {education.map((item, i) => (
-                <TimelineItem
-                  key={item.title}
-                  index={i}
-                  accentVar="--signal"
-                  title={item.title}
-                  org={item.org}
-                  period={item.period}
-                  description={item.description}
-                />
-              ))}
-            </div>
-          </div>
-        </div>
+        <SectionHeading
+          eyebrow="Experience"
+          title="Where I've shipped"
+          sub="Contract work, open-source contributions, infrastructure bounties and hackathons, each taken from first commit to a running deployment."
+        />
+        <ol className="border-b border-hairline">
+          {experience.map((item) => (
+            <Role key={item.role} {...item} />
+          ))}
+        </ol>
       </div>
     </section>
   );
