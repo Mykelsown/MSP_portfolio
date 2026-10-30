@@ -1,60 +1,124 @@
-import { aboutText, skills } from "../data/content";
+import { education, interests, languages, skillSet, softSkills, toolkit } from "../data/content";
 import { useReveal } from "../hooks/useReveal";
+import Curves from "./Curves";
 
-const CATEGORY_ORDER = ["Frontend", "Backend", "Tooling"];
-
-export default function About() {
-  const headingRef = useReveal();
-  const textRef = useReveal();
-  const skillsRef = useReveal();
-
+function PanelHeading({ children, aside }) {
   return (
-    <section id="about" className="py-24 sm:py-28">
-      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-        <div ref={headingRef} className="reveal mb-16 max-w-2xl">
-          <p className="mb-3 font-mono text-sm" style={{ color: "var(--accent)" }}>
-            // 01 about
-          </p>
-          <h2 className="font-display text-3xl font-bold sm:text-4xl">{aboutText.heading}</h2>
-          <p className="mt-4 text-lg text-muted">{aboutText.intro}</p>
-        </div>
+    <div className="mb-5 flex flex-wrap items-center gap-3">
+      <h3 className="font-display text-2xl">{children}</h3>
+      {aside}
+    </div>
+  );
+}
 
-        <div ref={textRef} className="reveal grid grid-cols-1 gap-6 lg:grid-cols-3">
-          {aboutText.paragraphs.map((p, i) => (
-            <p key={i} className="rounded-2xl border border-hairline bg-surface p-6 leading-relaxed text-muted card-shadow">
-              {p}
-            </p>
-          ))}
-        </div>
-
-        <div
-          ref={skillsRef}
-          className="reveal mt-8 rounded-2xl border p-6"
-          style={{ borderColor: "var(--accent-2)", background: "var(--accent-2-soft)" }}
+// Two-column list with a hairline divider, after the skill lists in the reference design.
+function SplitList({ items }) {
+  const half = Math.ceil(items.length / 2);
+  const cols = [items.slice(0, half), items.slice(half)];
+  return (
+    <div className="grid grid-cols-2">
+      {cols.map((col, i) => (
+        <ul
+          key={i}
+          className={`space-y-2.5 text-sm ${i === 1 ? "border-l pl-6" : "pr-6"}`}
+          style={i === 1 ? { borderColor: "var(--panel-border)" } : undefined}
         >
-          <p className="font-mono text-sm leading-relaxed">{aboutText.mantraNote}</p>
-        </div>
+          {col.map((item) => (
+            <li key={item}>{item}</li>
+          ))}
+        </ul>
+      ))}
+    </div>
+  );
+}
 
-        <div className="mt-20">
-          <h3 className="mb-10 font-display text-2xl font-bold">Technical Skills</h3>
-          <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
-            {CATEGORY_ORDER.map((category) => (
-              <div key={category}>
-                <p className="mb-4 font-mono text-xs uppercase tracking-widest text-muted">{category}</p>
-                <div className="flex flex-wrap gap-2">
-                  {skills
-                    .filter((s) => s.category === category)
-                    .map((s) => (
+function InlineList({ items }) {
+  return (
+    <ul className="flex flex-wrap items-center gap-y-2 text-sm">
+      {items.map((item, i) => (
+        <li key={item} className="flex items-center">
+          {i > 0 && <span className="mx-4 h-4 w-px" style={{ background: "var(--panel-border)" }} />}
+          {item}
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+// The large rounded profile panel: education, toolkit, skills, interests and languages.
+export default function About() {
+  const ref = useReveal();
+  return (
+    <section id="profile" className="relative py-20 sm:py-24">
+      <Curves variant="b" className="-left-40 bottom-0 hidden h-[460px] w-[620px] lg:block" />
+      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        <div
+          ref={ref}
+          className="reveal relative grid grid-cols-1 gap-12 rounded-[2.5rem] border p-8 sm:p-12 lg:grid-cols-2 lg:gap-16 lg:rounded-[3.5rem] lg:p-16"
+          style={{
+            background: "linear-gradient(160deg, var(--panel) 0%, var(--accent-soft) 100%)",
+            borderColor: "var(--panel-border)",
+          }}
+        >
+          <div className="space-y-12">
+            <div>
+              <PanelHeading>Education</PanelHeading>
+              <div className="space-y-6">
+                {education.map((e) => (
+                  <div key={e.title}>
+                    <div className="flex flex-wrap items-center gap-3">
+                      <p className="font-bold">{e.title}</p>
                       <span
-                        key={s.name}
-                        className="rounded-lg border border-hairline bg-surface px-3 py-2 text-sm font-medium"
+                        className="rounded-full border px-3 py-0.5 text-xs font-bold"
+                        style={{ borderColor: "var(--accent)", color: "var(--accent-ink)" }}
                       >
-                        {s.name}
+                        {e.period}
                       </span>
-                    ))}
-                </div>
+                    </div>
+                    <p className="mt-1 text-sm text-accent">{e.org}</p>
+                    <p className="mt-2 text-sm leading-relaxed text-muted">{e.description}</p>
+                  </div>
+                ))}
               </div>
-            ))}
+            </div>
+
+            <div>
+              <PanelHeading>Technical toolkit</PanelHeading>
+              <ul className="grid grid-cols-4 gap-3 sm:max-w-sm">
+                {toolkit.map((t) => (
+                  <li
+                    key={t.name}
+                    title={t.name}
+                    className="flex aspect-square flex-col items-center justify-center rounded-2xl bg-surface card-shadow"
+                  >
+                    <span className="font-display text-2xl" style={{ color: "var(--accent-ink)" }}>
+                      {t.short}
+                    </span>
+                    <span className="mt-0.5 text-[10px] font-bold text-muted">{t.name}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div>
+              <PanelHeading>Interests</PanelHeading>
+              <InlineList items={interests} />
+            </div>
+          </div>
+
+          <div className="space-y-12">
+            <div>
+              <PanelHeading>Soft skills</PanelHeading>
+              <SplitList items={softSkills} />
+            </div>
+            <div>
+              <PanelHeading>Skill set</PanelHeading>
+              <SplitList items={skillSet} />
+            </div>
+            <div>
+              <PanelHeading>Languages</PanelHeading>
+              <SplitList items={languages} />
+            </div>
           </div>
         </div>
       </div>
