@@ -1,6 +1,6 @@
 # Samuel Micheal Pelumi, Portfolio
 
-My personal developer portfolio, built with React, Vite, and Tailwind CSS. Dark and light mode, an ambient animated background, and a resume that's actually kept up to date.
+My personal portfolio as a full-stack software engineer, built with React, Vite, and Tailwind CSS. A light, neutral design with a Cooper / Avant Garde type pairing, and a resume that's actually kept up to date.
 
 ## Live site
 
@@ -8,11 +8,13 @@ https://mykelsown.netlify.app
 
 ## Features
 
-- **Dark and light mode.** Toggle in the navbar, saved across visits, no flash on reload.
-- **Ambient animated background.** Soft, slow-drifting color fields behind the content, never on top of it. Colors adapt automatically to the active theme.
+- **Light, neutral design.** Warm paper background, ink-navy type and a soft periwinkle accent.
+- **Cooper / Avant Garde type pairing.** Caprasimo (a Cooper-style display face) for headings and a self-hosted TeX Gyre Adventor (Avant Garde Gothic clone) for body text.
+- **What I Do** section covering frontend, backend, data and deployment pipelines.
+- **Currently Doing** section tracking my transition into AI and ML engineering.
+- **Top three builds**, my most active GitHub repositories ranked by commit count, plus more projects.
 - **Contact form.** Name, email, and message, wired up to Netlify Forms with spam protection built in.
-- **Projects section** with live demo and source links for everything I've shipped.
-- **Experience and education timeline.**
+- **Experience timeline** and a profile panel for education, toolkit and skills.
 - **Downloadable resume**, kept in sync with the content on the site.
 - Fully responsive, from phone to desktop.
 
@@ -22,6 +24,7 @@ https://mykelsown.netlify.app
 - [Vite](https://vitejs.dev/) for the build and dev server
 - [Tailwind CSS](https://tailwindcss.com/) v4
 - [Lucide](https://lucide.dev/) for icons
+- [Caprasimo](https://fonts.google.com/specimen/Caprasimo) (OFL) and [TeX Gyre Adventor](https://www.gust.org.pl/projects/e-foundry/tex-gyre/adventor) (GUST Font License) for type
 - [Netlify Forms](https://docs.netlify.com/forms/setup/) for the contact form backend
 
 ## Getting started
@@ -46,12 +49,12 @@ npm run preview   # serve the production build locally
 
 ```
 src/
-  components/       Page sections: Navbar, Hero, About, Projects, Experience, Contact, Footer
+  components/       Page sections: Navbar, Hero, Services, Now, Projects, Experience, About, Contact, Footer
   components/icons/ Small custom icons not covered by lucide-react
-  context/          ThemeContext, handles the dark/light mode toggle
   hooks/            useReveal, a small scroll-triggered fade-in hook
   data/content.js   All page copy and structured content in one place
   assets/imgs/      Project screenshots and profile photo
+public/fonts/       Self-hosted TeX Gyre Adventor (woff2) and its license
 public/resume/      Downloadable resume PDF
 ```
 
