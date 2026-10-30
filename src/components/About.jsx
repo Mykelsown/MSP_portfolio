@@ -32,12 +32,11 @@ function SplitList({ items }) {
   );
 }
 
-function InlineList({ items }) {
+function ChipList({ items }) {
   return (
-    <ul className="flex flex-wrap items-center gap-y-2 text-sm">
-      {items.map((item, i) => (
-        <li key={item} className="flex items-center">
-          {i > 0 && <span className="mx-4 h-4 w-px" style={{ background: "var(--panel-border)" }} />}
+    <ul className="flex flex-wrap gap-2">
+      {items.map((item) => (
+        <li key={item} className="rounded-full bg-surface px-4 py-1.5 text-sm">
           {item}
         </li>
       ))}
@@ -66,14 +65,14 @@ export default function About() {
               <div className="space-y-6">
                 {education.map((e) => (
                   <div key={e.title}>
-                    <div className="flex flex-wrap items-center gap-3">
-                      <p className="font-bold">{e.title}</p>
+                    <div className="flex flex-col items-start gap-2">
                       <span
                         className="rounded-full border px-3 py-0.5 text-xs font-bold"
                         style={{ borderColor: "var(--accent)", color: "var(--accent-ink)" }}
                       >
                         {e.period}
                       </span>
+                      <p className="font-bold">{e.title}</p>
                     </div>
                     <p className="mt-1 text-sm text-accent">{e.org}</p>
                     <p className="mt-2 text-sm leading-relaxed text-muted">{e.description}</p>
@@ -102,7 +101,7 @@ export default function About() {
 
             <div>
               <PanelHeading>Interests</PanelHeading>
-              <InlineList items={interests} />
+              <ChipList items={interests} />
             </div>
           </div>
 
