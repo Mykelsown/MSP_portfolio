@@ -52,6 +52,11 @@ html {
   color-scheme: light;
 }
 
+/* Keep anchored sections clear of the fixed navbar. */
+section[id] {
+  scroll-margin-top: 5rem;
+}
+
 body {
   background-color: var(--bg);
   color: var(--text);

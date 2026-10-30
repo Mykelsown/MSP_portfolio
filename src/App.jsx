@@ -1,5 +1,7 @@
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
+import Services from "./components/Services";
+import Now from "./components/Now";
 import About from "./components/About";
 import Projects from "./components/Projects";
 import Experience from "./components/Experience";
@@ -12,9 +14,11 @@ export default function App() {
       <Navbar />
       <main className="overflow-x-hidden">
         <Hero />
-        <About />
+        <Services />
+        <Now />
         <Projects />
         <Experience />
+        <About />
         <Contact />
       </main>
       <Footer />
