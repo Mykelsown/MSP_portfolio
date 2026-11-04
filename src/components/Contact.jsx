@@ -1,25 +1,19 @@
-import { Mail, MapPin, Phone } from "lucide-react";
-import GithubMark from "./icons/GithubMark";
 import ContactForm from "./ContactForm";
+import Icon3D from "./Icon3D";
 import { contact, profile } from "../data/content";
 import SectionHeading from "./SectionHeading";
 
 const CHANNELS = [
-  { icon: Mail, label: "Email", value: profile.email, href: `mailto:${profile.email}` },
-  { icon: Phone, label: "Phone", value: profile.phone, href: `tel:${profile.phone}` },
-  { icon: GithubMark, label: "GitHub", value: profile.githubHandle, href: profile.github },
-  { icon: MapPin, label: "Location", value: profile.location, href: null },
+  { icon: "email", label: "Email", value: profile.email, href: `mailto:${profile.email}` },
+  { icon: "phone", label: "Phone", value: profile.phone, href: `tel:${profile.phone}` },
+  { icon: "github", label: "GitHub", value: profile.githubHandle, href: profile.github },
+  { icon: "location", label: "Location", value: profile.location, href: null },
 ];
 
-function ChannelCard({ icon: Icon, label, value, href }) {
+function ChannelCard({ icon, label, value, href }) {
   const content = (
     <>
-      <span
-        className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full"
-        style={{ background: "var(--accent-soft)", color: "var(--accent-ink)" }}
-      >
-        <Icon size={18} />
-      </span>
+      <Icon3D name={icon} size={52} className="group-hover:-translate-y-1" />
       <span className="min-w-0">
         <p className="label text-muted">{label}</p>
         <p className="font-bold break-all">{value}</p>
@@ -27,7 +21,7 @@ function ChannelCard({ icon: Icon, label, value, href }) {
     </>
   );
 
-  const className = "flex items-center gap-4 rounded-2xl border border-hairline bg-surface p-4 transition-transform hover:-translate-y-0.5";
+  const className = "group flex items-center gap-4 rounded-2xl border border-hairline bg-surface p-3.5 transition-transform hover:-translate-y-0.5";
 
   if (!href) {
     return <div className={className}>{content}</div>;

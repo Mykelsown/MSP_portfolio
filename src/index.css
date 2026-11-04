@@ -90,6 +90,12 @@ body {
   text-transform: uppercase;
 }
 
+/* Soft ground shadow that seats the 3D contact icons on the page. */
+.icon-3d {
+  filter: drop-shadow(0 5px 6px rgba(28, 58, 85, 0.2));
+  transition: transform 0.25s ease;
+}
+
 /* Pill heading, after the "About me" tab in the reference design. */
 .pill-heading {
   display: inline-flex;
@@ -114,6 +120,7 @@ body {
 
 @media (prefers-reduced-motion: reduce) {
   .status-dot { animation: none !important; }
+  .icon-3d { transition: none !important; }
   * { scroll-behavior: auto; }
   .reveal { transition: none !important; }
 }

@@ -1,29 +1,24 @@
-import { ArrowRight, Download, Mail, MapPin, Phone } from "lucide-react";
-import GithubMark from "./icons/GithubMark";
+import { ArrowRight, Download } from "lucide-react";
 import Curves from "./Curves";
+import Icon3D from "./Icon3D";
 import { aboutText, profile } from "../data/content";
 import photo from "../assets/imgs/micheal-photo.jpg";
 
 const CONTACTS = [
-  { icon: Mail, value: profile.email, href: `mailto:${profile.email}` },
-  { icon: Phone, value: profile.phone, href: `tel:${profile.phone}` },
-  { icon: GithubMark, value: profile.githubHandle, href: profile.github },
-  { icon: MapPin, value: profile.location, href: null },
+  { icon: "email", value: profile.email, href: `mailto:${profile.email}` },
+  { icon: "phone", value: profile.phone, href: `tel:${profile.phone}` },
+  { icon: "github", value: profile.githubHandle, href: profile.github },
+  { icon: "location", value: profile.location, href: null },
 ];
 
-function ContactChip({ icon: Icon, value, href }) {
+function ContactChip({ icon, value, href }) {
   const inner = (
     <>
-      <span
-        className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full"
-        style={{ background: "var(--accent-soft)", color: "var(--accent-ink)" }}
-      >
-        <Icon size={14} />
-      </span>
+      <Icon3D name={icon} size={38} className="group-hover:-translate-y-0.5" />
       <span className="truncate text-sm font-bold">{value}</span>
     </>
   );
-  const className = "flex min-w-0 items-center gap-3";
+  const className = "group flex min-w-0 items-center gap-3";
   if (!href) return <div className={className}>{inner}</div>;
   return (
     <a
