@@ -44,8 +44,10 @@ export default function Hero() {
 
       <div className="relative mx-auto grid w-full max-w-6xl grid-cols-1 items-center gap-14 px-4 sm:px-6 lg:grid-cols-[1.15fr_0.85fr] lg:px-8">
         <div>
-          <p className="mb-6 inline-flex items-center gap-2 rounded-full border border-hairline bg-surface px-3 py-1.5 text-xs font-bold">
-            <span className="status-dot" /> Open to full-stack & AI/ML roles
+          {/* Plain editorial line rather than a status badge: no pill, no glowing dot. */}
+          <p className="mb-6 flex items-center gap-3 text-sm text-muted">
+            <span className="h-px w-8 shrink-0" style={{ background: "var(--accent)" }} aria-hidden="true" />
+            Open to full-stack and AI/ML roles
           </p>
 
           <h1 className="font-display text-5xl leading-[0.95] sm:text-6xl lg:text-7xl">
