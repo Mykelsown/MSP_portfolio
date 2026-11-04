@@ -24,6 +24,8 @@ https://mykelsown.netlify.app
 - [Vite](https://vitejs.dev/) for the build and dev server
 - [Tailwind CSS](https://tailwindcss.com/) v4
 - [Lucide](https://lucide.dev/) for icons
+- [Devicon](https://devicon.dev/) (MIT) for the stack logos in the technical toolkit
+- [Microsoft Fluent Emoji 3D](https://github.com/microsoft/fluentui-emoji) (MIT) for the 3D email, phone and location icons; the GitHub icon is drawn in the same style
 - [Caprasimo](https://fonts.google.com/specimen/Caprasimo) (OFL) and [TeX Gyre Adventor](https://www.gust.org.pl/projects/e-foundry/tex-gyre/adventor) (GUST Font License) for type
 - [Netlify Forms](https://docs.netlify.com/forms/setup/) for the contact form backend
 
