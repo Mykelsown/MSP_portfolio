@@ -2,6 +2,13 @@ import { education, interests, languages, skillSet, softSkills, toolkit } from "
 import { useReveal } from "../hooks/useReveal";
 import Curves from "./Curves";
 
+// Stack logos, keyed by file name without extension (go, react, ...).
+const STACK_LOGOS = Object.fromEntries(
+  Object.entries(import.meta.glob("../assets/stack/*.svg", { eager: true, import: "default", query: "?url" })).map(
+    ([path, url]) => [path.split("/").pop().replace(".svg", ""), url]
+  )
+);
+
 function PanelHeading({ children, aside }) {
   return (
     <div className="mb-5 flex flex-wrap items-center gap-3">
@@ -88,12 +95,18 @@ export default function About() {
                   <li
                     key={t.name}
                     title={t.name}
-                    className="flex aspect-square flex-col items-center justify-center rounded-2xl bg-surface card-shadow"
+                    className="flex aspect-square flex-col items-center justify-center gap-1.5 rounded-2xl bg-surface p-2 card-shadow transition-transform hover:-translate-y-0.5"
                   >
-                    <span className="font-display text-2xl" style={{ color: "var(--accent-ink)" }}>
-                      {t.short}
-                    </span>
-                    <span className="mt-0.5 text-[10px] font-bold text-muted">{t.name}</span>
+                    <img
+                      src={STACK_LOGOS[t.logo]}
+                      alt=""
+                      width="36"
+                      height="36"
+                      loading="lazy"
+                      draggable="false"
+                      className="h-8 w-8 object-contain sm:h-9 sm:w-9"
+                    />
+                    <span className="text-[10px] font-bold text-muted">{t.name}</span>
                   </li>
                 ))}
               </ul>

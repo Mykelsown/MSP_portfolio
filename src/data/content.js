@@ -270,15 +270,16 @@ export const education = [
 ];
 
 // Tile grid, after the software-icon tiles in the reference design.
+// `logo` is the file name (without extension) in src/assets/stack.
 export const toolkit = [
-  { short: "Go", name: "Go" },
-  { short: "Ts", name: "TypeScript" },
-  { short: "Re", name: "React" },
-  { short: "Pg", name: "PostgreSQL" },
-  { short: "Dk", name: "Docker" },
-  { short: "Nd", name: "Node.js" },
-  { short: "Rs", name: "Rust" },
-  { short: "Py", name: "Python" },
+  { logo: "go", name: "Go" },
+  { logo: "typescript", name: "TypeScript" },
+  { logo: "react", name: "React" },
+  { logo: "postgresql", name: "PostgreSQL" },
+  { logo: "docker", name: "Docker" },
+  { logo: "nodejs", name: "Node.js" },
+  { logo: "rust", name: "Rust" },
+  { logo: "python", name: "Python" },
 ];
 
 export const softSkills = ["Systems thinking", "Debugging & root cause", "Clear documentation", "Ownership"];
